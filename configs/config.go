@@ -22,7 +22,7 @@ type Config struct {
     Password string `yaml:"password"`
 
     // AdminID is the Telegram user ID of the administrator for the bot.
-    AdminID string `yaml:"admin"`
+    AdminID int64 `yaml:"admin"`
 }
 
 // GetBotToken returns the bot token from the configuration.
@@ -41,7 +41,7 @@ func (c *Config) GetPassword() string {
 }
 
 // GetAdminID returns the Telegram user ID of the administrator.
-func (c *Config) GetAdminID() string {
+func (c *Config) GetAdminID() int64 {
     return c.AdminID
 }
 
@@ -53,7 +53,7 @@ var TeleConfig *Config
 func init() {
     // TODO: Update the file path in production.
     // Currently set to a specific file path for development purposes.
-    file, err := os.Open("D:\\Work\\TeleBot\\configs\\config.yaml")
+    file, err := os.Open("D:\\Work\\TelegramAutomation\\configs\\config.yaml")
     if err != nil {
         log.Fatalf("[FATAL]: Error opening config.yaml - %s\n", err)
     }
